@@ -29,8 +29,8 @@ app.get('/', (req, res) => {
 app.get('/favicon.ico', (req, res) => res.status(204));
 
 // Rutas del proxy para users y musicians
-app.use('/api/v1/users', proxy('http://localhost:3000'));
-app.use('/api/v1/musicians', proxy('http://localhost:5000'));
+app.use('/api/v1/users', proxy('http://web-server:3000'));
+app.use('/api/v1/musicians', proxy('http://web-server:5000'));
 
 // Middleware para manejar 404
 app.use((req, res, next) => {
@@ -39,6 +39,5 @@ app.use((req, res, next) => {
 
 // Inicia el servidor
 app.listen(PORT, () => {
-  signale.success(`Servicio ${GATEWAY} corriendo en http://localhost:${PORT}`);
+  signale.success('Servicio ${GATEWAY} corriendo en http://localhost:${PORT}');
 });
-
